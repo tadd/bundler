@@ -304,8 +304,6 @@ module Bundler
       rescue Gem::GemNotFoundException
         Bundler::SharedHelpers.set_env "BUNDLE_BIN_PATH", File.expand_path("../../../exe/bundle", __FILE__)
       end
-
-      # Set BUNDLE_GEMFILE
       Bundler::SharedHelpers.set_env "BUNDLE_GEMFILE", find_gemfile(:order_matters).to_s
       Bundler::SharedHelpers.set_env "BUNDLER_VERSION", Bundler::VERSION
     end
