@@ -12,6 +12,7 @@ branches:
     - auto
     - /.+-dev$/
     - /.+-stable$/
+    - clean_local_test_run
 
 notifications:
   slack:
