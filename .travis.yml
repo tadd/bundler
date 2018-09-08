@@ -1,5 +1,5 @@
 language: ruby
-script: rake spec:travis
+script: bin/rspec spec/runtime/setup_spec.rb -e symlink
 before_script:
   - travis_retry rake -E 'module ::Bundler; VERSION = "0.0.0"; end' override_version
   - travis_retry rake spec:travis:deps
