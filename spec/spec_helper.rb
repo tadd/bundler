@@ -99,10 +99,6 @@ RSpec.configure do |config|
     c.syntax = :expect
   end
 
-  config.mock_with :rspec do |mocks|
-    mocks.allow_message_expectations_on_nil = false
-  end
-
   config.around :each do |example|
     if ENV["BUNDLE_RUBY"]
       orig_ruby = Gem.ruby
