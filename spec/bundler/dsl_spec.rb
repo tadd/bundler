@@ -274,7 +274,7 @@ RSpec.describe Bundler::Dsl do
         end
 
         subject.dependencies.each do |d|
-          expect(d.source.uri).to eq("git://github.com/spree/spree.git")
+          expect(d.source.uri).to eq("https://github.com/spree/spree.git")
         end
       end
     end

@@ -602,8 +602,8 @@ RSpec.describe "gemcutter's dependency API" do
       G
 
       bundle :install, :artifice => "endpoint_basic_authentication"
-      expect(out).to include("Warning: the gem 'rack' was found in multiple sources.")
-      expect(out).not_to include("#{user}:#{password}")
+      expect(err).to include("Warning: the gem 'rack' was found in multiple sources.")
+      expect(err).not_to include("#{user}:#{password}")
       expect(the_bundle).to include_gems "rack 1.0.0"
     end
 

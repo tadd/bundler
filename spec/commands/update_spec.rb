@@ -285,14 +285,14 @@ RSpec.describe "bundle update" do
       bundle "update", :all => bundle_update_requires_all?
 
       expect(last_command).to be_failure
-      expect(out).to match(/You are trying to install in deployment mode after changing.your Gemfile/m)
-      expect(out).to match(/freeze \nby running `bundle install --no-deployment`./m)
+      expect(err).to match(/You are trying to install in deployment mode after changing.your Gemfile/m)
+      expect(err).to match(/freeze \nby running `bundle install --no-deployment`./m)
     end
 
     it "should suggest different command when frozen is set globally", :bundler => "< 3" do
       bundle! "config --global frozen 1"
       bundle "update", :all => bundle_update_requires_all?
-      expect(out).to match(/You are trying to install in deployment mode after changing.your Gemfile/m).
+      expect(err).to match(/You are trying to install in deployment mode after changing.your Gemfile/m).
         and match(/freeze \nby running `bundle config unset frozen`./m)
     end
 
@@ -947,7 +947,7 @@ RSpec.describe "bundle update conservative" do
     it "raises if too many flags are provided" do
       bundle "update --patch --minor", :all => bundle_update_requires_all?
 
-      expect(last_command.bundler_err).to eq "Provide only one of the following options: minor, patch"
+      expect(last_command.bundler_err).to include "Provide only one of the following options: minor, patch"
     end
   end
 end

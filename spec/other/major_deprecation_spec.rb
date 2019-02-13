@@ -275,7 +275,7 @@ The :bitbucket git source is deprecated, and will be removed in the future. Add 
     end
 
         EOS
-        expect(Bundler::SharedHelpers).to receive(:major_deprecation).with(3, msg)
+        expect(Bundler::SharedHelpers).to receive(:major_deprecation).with(2, msg)
         subject.gem("not-really-a-gem", :bitbucket => "mcorp/flatlab-rails")
       end
     end

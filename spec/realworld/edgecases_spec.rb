@@ -202,8 +202,7 @@ RSpec.describe "real world edgecases", :realworld => true, :sometimes => true do
     G
 
     bundle! :install, forgotten_command_line_options(:path => "vendor/bundle")
-    expect(err).not_to include("Could not find rake")
-    expect(last_command.stderr).to be_empty
+    expect(err).to be_empty
   end
 
   it "checks out git repos when the lockfile is corrupted" do

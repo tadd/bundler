@@ -626,7 +626,7 @@ RSpec.describe "bundle install with gems on multiple sources" do
     end
   end
 
-  context "when a gem is available from multiple ambiguous sources", :bundler => "2" do
+  context "when a gem is available from multiple ambiguous sources", :bundler => "3" do
     it "raises, suggesting a source block" do
       build_repo4 do
         build_gem "depends_on_rack" do |s|

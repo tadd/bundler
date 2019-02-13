@@ -107,7 +107,7 @@ RSpec.describe "post bundle message" do
           gem "rack"
           gem "not-a-gem", :group => :development
         G
-        expect(out).to include("Could not find gem 'not-a-gem' in any of the gem sources listed in your Gemfile.")
+        expect(err).to include("Could not find gem 'not-a-gem' in any of the gem sources listed in your Gemfile.")
       end
 
       it "should report a helpful error message", :bundler => "3" do

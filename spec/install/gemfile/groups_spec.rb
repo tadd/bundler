@@ -207,7 +207,7 @@ RSpec.describe "bundle install with groups" do
       it "errors out when passing a group to with and without via CLI flags", :bundler => "< 3" do
         bundle :install, forgotten_command_line_options(:with => "emo debugging", :without => "emo")
         expect(last_command).to be_failure
-        expect(out).to include("The offending groups are: emo")
+        expect(err).to include("The offending groups are: emo")
       end
 
       it "allows the BUNDLE_WITH setting to override BUNDLE_WITHOUT" do

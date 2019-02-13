@@ -23,7 +23,8 @@ RSpec.describe "bundle install" do
       install_gemfile <<-G
         gem 'yaml_spec', :path => "#{lib_path("yaml_spec-1.0")}"
       G
-      expect(last_command.stderr).to be_empty
+
+      expect(err).to be_empty
     end
   end
 

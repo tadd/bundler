@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe "bundle install" do
+RSpec.describe "bundle install", :bundler => "< 3" do
   before :each do
     gemfile <<-G
       source "file://#{gem_repo1}"
@@ -61,24 +61,14 @@ RSpec.describe "bundle install" do
       let(:flag) { "force" }
     end
 
-    it "shows a deprecation when single flag passed", :bundler => 2 do
+    it "shows a deprecation when single flag passed", :bundler => "<= 2" do
       bundle! "install --force"
       expect(err).to include "[DEPRECATED] The `--force` option has been renamed to `--redownload`"
     end
 
-    it "shows a deprecation when multiple flags passed", :bundler => 2 do
+    it "shows a deprecation when multiple flags passed", :bundler => "<= 2" do
       bundle! "install --no-color --force"
       expect(err).to include "[DEPRECATED] The `--force` option has been renamed to `--redownload`"
-    end
-
-    it "does not show a deprecation when single flag passed", :bundler => "< 2" do
-      bundle! "install --force"
-      expect(out).not_to include "[DEPRECATED] The `--force` option has been renamed to `--redownload`"
-    end
-
-    it "does not show a deprecation when multiple flags passed", :bundler => "< 2" do
-      bundle! "install --no-color --force"
-      expect(out).not_to include "[DEPRECATED] The `--force` option has been renamed to `--redownload`"
     end
   end
 
