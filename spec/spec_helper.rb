@@ -29,7 +29,16 @@ ENV["BUNDLE_SPEC_RUN"] = "true"
 # Don't wrap output in tests
 ENV["THOR_COLUMNS"] = "10000"
 
-Spec::CodeClimate.setup
+begin
+  require File.expand_path("../support/path.rb", __FILE__)
+  spec = Gem::Specification.load(Spec::Path.gemspec.to_s)
+  simplecov = spec.dependencies.find {|d| d.name == "simplecov" }
+  gem "simplecov", simplecov.requirement.to_s
+rescue Gem::LoadError
+  abort "Simplecov couldn't be activated. Run rake spec:deps to install it"
+end
+
+Spec::SimpleCov.setup
 
 module Gem
   def self.ruby=(ruby)
