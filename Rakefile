@@ -182,7 +182,7 @@ namespace :spec do
 
   desc "Run the tests on Travis CI against a RubyGem version (using ENV['RGV'])"
   task :travis do
-    rg = ENV["RGV"] || raise("RubyGems version is required on Travis!")
+    rg = ENV["RGV"] || raise("RubyGems version is required on Travis! (using ENV['RGV'])")
 
     # disallow making network requests on CI
     ENV["BUNDLER_SPEC_PRE_RECORDED"] = "TRUE"
