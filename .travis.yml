@@ -41,8 +41,10 @@ stages:
 # see Rakefile:125 for the list of possible RGV values
 env:
   # We need to know if changes to rubygems will break bundler on release
+  - RGV=master BUNDLER_SPEC_SUB_VERSION=3.0.0
   - RGV=master
   # Test the latest rubygems release with all of our supported rubies
+  - RGV=v3.0.3 BUNDLER_SPEC_SUB_VERSION=3.0.0
   - RGV=v3.0.3
 
 jobs:
@@ -65,10 +67,6 @@ jobs:
     # Ruby-head (we want to know how we're doing, but not fail the build)
     - rvm: ruby-head
       env: RGV=master
-      stage: test
-    # 3.x mode
-    - rvm: 2.6.1
-      env: RGV=v3.0.3 BUNDLER_SPEC_SUB_VERSION=3.0.0
       stage: test
 
   allow_failures:
