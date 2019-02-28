@@ -31,7 +31,6 @@ rvm:
   - 2.6.1
   - 2.5.3
   - 2.4.5
-  - 2.3.8
 
 stages:
   - linting
@@ -52,6 +51,13 @@ jobs:
     - rvm: 2.6.1
       script: rake rubocop
       stage: linting
+    # Ruby 2.3 also tested in 2.x mode
+    - rvm: 2.3.8
+      env: RGV=master
+      stage: test
+    - rvm: 2.3.8
+      env: RGV=v3.0.2
+      stage: test
     # Ruby 2.5, Rubygems 2.7
     - rvm: 2.5.3
       env: RGV=v2.7.9
