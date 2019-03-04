@@ -36,6 +36,11 @@ module Rake
   end
 end
 
+desc "Run specs"
+task :spec do
+  sh("bin/rspec")
+end
+
 namespace :spec do
   desc "Ensure spec dependencies are installed"
   task :deps do
@@ -83,19 +88,7 @@ namespace :spec do
       Rake::Task["spec:deps"].invoke
     end
   end
-end
 
-desc "Run specs"
-task :spec do
-  sh("bin/rspec")
-end
-
-desc "Run RuboCop"
-task :rubocop do
-  sh("bin/rubocop --parallel")
-end
-
-namespace :spec do
   task :clean do
     rm_rf "tmp"
   end
@@ -223,6 +216,11 @@ namespace :spec do
       raise "Spec run failed, please review the log for more information"
     end
   end
+end
+
+desc "Run RuboCop"
+task :rubocop do
+  sh("bin/rubocop --parallel")
 end
 
 begin
