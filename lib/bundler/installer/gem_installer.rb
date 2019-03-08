@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "shellwords"
+
 module Bundler
   class GemInstaller
     attr_reader :spec, :standalone, :worker, :force, :installer
