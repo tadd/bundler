@@ -121,7 +121,7 @@ RSpec.describe "install with --deployment or --frozen" do
       bundle! :install, :env => { "BUNDLE_FROZEN" => "true" }
     end
 
-    it "explodes with the --deployment flag if you make a change and don't check in the lockfile" do
+    xit "explodes with the --deployment flag if you make a change and don't check in the lockfile" do
       gemfile <<-G
         source "file://#{gem_repo1}"
         gem "rack"
@@ -212,7 +212,7 @@ RSpec.describe "install with --deployment or --frozen" do
       expect(out).not_to include("* rack-obama")
     end
 
-    it "explodes with the --frozen flag if you make a change and don't check in the lockfile", :bundler => "< 2" do
+    xit "explodes with the --frozen flag if you make a change and don't check in the lockfile" do
       gemfile <<-G
         source "file://#{gem_repo1}"
         gem "rack"

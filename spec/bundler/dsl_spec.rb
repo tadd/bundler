@@ -61,17 +61,23 @@ RSpec.describe Bundler::Dsl do
         it_behaves_like "the github DSL", "https"
       end
 
-      context "when github.https config is false" do
+      context "when github.https config is false", :bundler => "2" do
         before { bundle "config set github.https false" }
 
         it_behaves_like "the github DSL", "git"
       end
 
-      context "by default", :bundler => "< 2" do
-        it_behaves_like "the github DSL", "git"
+      context "when github.https config is false", :bundler => "3" do
+        before { bundle "config set github.https false" }
+
+        pending "should show a proper message about the removed setting"
       end
 
       context "by default", :bundler => "2" do
+        it_behaves_like "the github DSL", "https"
+      end
+
+      context "by default", :bundler => "3" do
         it_behaves_like "the github DSL", "https"
       end
 
