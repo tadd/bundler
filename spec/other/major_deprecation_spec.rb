@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe "major deprecations" do
+RSpec.describe "major deprecations", :bundler => "< 3" do
   let(:warnings) { err }
 
   describe "Bundler" do
