@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe "bundle install", :bundler => "< 3" do
+RSpec.describe "bundle install" do
   before :each do
     gemfile <<-G
       source "file://#{gem_repo1}"
@@ -56,7 +56,7 @@ RSpec.describe "bundle install", :bundler => "< 3" do
     end
   end
 
-  describe "with --force" do
+  describe "with --force", :bundler => "<= 2" do
     it_behaves_like "an option to force redownloading gems" do
       let(:flag) { "force" }
     end
