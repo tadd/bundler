@@ -149,6 +149,7 @@ RSpec.describe "major deprecations" do
 
         context "with the #{flag_name} flag", :bundler => "2" do
           it "should print a deprecation warning" do
+            bundle "install" # to create a lockfile, which deployment or frozen need
             bundle "install #{flag_name} #{value}"
 
             expect(deprecations).to include(
