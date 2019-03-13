@@ -201,7 +201,8 @@ RSpec.describe "real world edgecases", :realworld => true, :sometimes => true do
       gem 'rack', '1.0.1'
     G
 
-    bundle! :install, forgotten_command_line_options(:path => "vendor/bundle")
+    bundle "config --local path vendor/bundle"
+    bundle! :install
     expect(err).to be_empty
   end
 
