@@ -514,7 +514,7 @@ module Bundler
         h
       end
 
-      Gem::Specification.send(:default_stubs, "*.gemspec").each do |stub|
+      Bundler.rubygems.default_stubs.each do |stub|
         default_spec = stub.to_spec
         default_spec_name = default_spec.name
         next if specs_by_name.key?(default_spec_name)
@@ -856,6 +856,16 @@ module Bundler
           Gem::Specification.stubs.find_all do |spec|
             spec.name == name
           end.map(&:to_spec)
+        end
+      end
+
+      if Gem::Specification.respond_to?(:default_stubs)
+        def default_stubs
+          Gem::Specification.default_stubs("*.gemspec")
+        end
+      else
+        def default_stubs
+          Gem::Specification.send(:default_stubs, "*.gemspec")
         end
       end
 
