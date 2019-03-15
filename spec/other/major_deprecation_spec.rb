@@ -127,7 +127,15 @@ RSpec.describe "major deprecations" do
         bundle "install --retry 3"
 
         expect(deprecations).to include(
-          "flags passed to commands will no longer be automatically remembered."
+          "flags passed to commands will no longer be automatically remembered. " \
+          "Instead please set flags you want remembered between commands using " \
+          "`bundle config set <setting name> <setting value>`, i.e. `bundle " \
+          "config set retry 3`. Once you are ready for the new behavior, use " \
+          "`bundle config set forget_cli_options true` to get rid of this " \
+          "message. Or if you want to get rid of this message and stick with the " \
+          "old behavior for now, run `bundle config set forget_cli_options " \
+          "false`, but keep in mind that this behavior will be fully removed in " \
+          "future versions of bundler."
         )
       end
 
