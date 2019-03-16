@@ -214,20 +214,6 @@ Lint/Void:
 
 # Layout
 
-Layout/AccessModifierIndentation:
-  Enabled: true
-  EnforcedStyle: outdent
-  Exclude:
-    - 'lib/bundler/cli.rb'
-    - 'lib/bundler/definition.rb'
-    - 'lib/bundler/feature_flag.rb'
-    - 'lib/bundler/gem_helpers.rb'
-    - 'lib/bundler/index.rb'
-    - 'lib/bundler/remote_specification.rb'
-    - 'lib/bundler/shared_helpers.rb'
-    - 'lib/bundler/source/path.rb'
-    - 'spec/realworld/gemfile_source_header_spec.rb'
-
 Layout/AlignArray:
   Enabled: true
 
